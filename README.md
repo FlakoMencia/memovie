@@ -1,3 +1,3 @@
 # Welcome to **MENCIA MOVIE'S SHOP**
 
-* &copy;reate by Mario Mencia * 
+* &copy;reate by Mario Mencia 
