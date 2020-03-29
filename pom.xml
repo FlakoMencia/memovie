@@ -112,7 +112,7 @@
     </build>
     
     <!--  If necesary for maven repositories access -->
-    <!--    <pluginRepositories>
+        <pluginRepositories>
         <pluginRepository>
             <id>central</id>
             <name>Central Repository</name>
@@ -137,6 +137,6 @@
             </snapshots>
         </repository>
     </repositories>
-    -->
+    
 
 </project>
