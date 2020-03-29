@@ -53,6 +53,32 @@
             <optional>true</optional>
         </dependency>
         
+                
+        <!--Maria DB--> 
+        <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>2.4.4</version>
+            <scope>runtime</scope>
+        </dependency>
+    
+    
+        
+        <!-- spring-security-oauth2 -->
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+            <version>2.4.0.RELEASE</version>
+        </dependency>
+
+        <!--  JWT  -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-jwt</artifactId>
+            <version>1.1.0.RELEASE</version>
+        </dependency>
+      
+        
         
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -72,17 +98,9 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
-        
-        <!--Maria DB--> 
-        <dependency>
-            <groupId>org.mariadb.jdbc</groupId>
-            <artifactId>mariadb-java-client</artifactId>
-            <version>2.4.4</version>
-            <scope>runtime</scope>
-        </dependency>
     </dependencies>
     
-    
+
 
     <build>
         <plugins>   
