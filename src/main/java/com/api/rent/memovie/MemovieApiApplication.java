@@ -21,8 +21,8 @@ public class MemovieApiApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        String pass = "admin";
-        String passBCrypt = passwordEncoder.encode(pass);
+//        String pass = "admin";
+//        String passBCrypt = passwordEncoder.encode(pass);
 //        System.out.println("****************passencriptado:" + passBCrypt);
 
     }

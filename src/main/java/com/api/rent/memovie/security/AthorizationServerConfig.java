@@ -12,6 +12,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 /**
  *
@@ -20,6 +21,9 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 @Configuration
 @EnableAuthorizationServer
 public class AthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+    
+    public static final String NOMBREAPP = "angularapp";
+    public static final String PASS = "123";
     
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -30,8 +34,9 @@ public class AthorizationServerConfig extends AuthorizationServerConfigurerAdapt
     
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.authenticationManager(authenticationManager).accessTokenConverter(accessTokenConverter());
-        super.configure(endpoints);        
+        endpoints.authenticationManager(authenticationManager)
+                .tokenStore(tokenStore()).
+                accessTokenConverter(accessTokenConverter());
         
     }
     
@@ -43,17 +48,24 @@ public class AthorizationServerConfig extends AuthorizationServerConfigurerAdapt
     
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory().withClient("angularapp")
-                .secret(passwordEncoder.encode("123"))
+        clients.inMemory().withClient(NOMBREAPP)
+                .secret(passwordEncoder.encode(PASS))
                 .scopes("read", "write")
-                .authorizedGrantTypes("password", "refresh_token");
+                .authorizedGrantTypes("password", "refresh_token")
+                .accessTokenValiditySeconds(3600)
+                .refreshTokenValiditySeconds(3600);
         super.configure(clients); 
     }
+    
+    @Bean
+    public JwtTokenStore tokenStore() {
+       return new JwtTokenStore(accessTokenConverter());
+    }
+    
     
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
         return jwtAccessTokenConverter;
     }
-    
 }
