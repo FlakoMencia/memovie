@@ -66,6 +66,9 @@ public class Movie implements Serializable {
     @Column(nullable = false)
     private Integer Stock;
     
+    @Column(nullable = false)
+    private Boolean availability;
+    
 //    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //    @NotFound(action = NotFoundAction.IGNORE)
 //    @JoinColumns({

@@ -4,13 +4,15 @@ import com.api.rent.memovie.model.MovieLikes;
 import com.api.rent.memovie.repository.MovieLikesRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author MARIO MENCIA
  */
-public class MovieLikesServiceImpl  implements MovieLikesService{
-    
+@Service
+public class MovieLikesServiceImpl implements MovieLikesService {
+
     @Autowired
     private MovieLikesRepository movieLikesRepository;
 
@@ -18,5 +20,11 @@ public class MovieLikesServiceImpl  implements MovieLikesService{
     public List<MovieLikes> findAll(String title) {
         return (List<MovieLikes>) movieLikesRepository.findAll();
     }
-    
+
+    @Override
+    public List<MovieLikes> findByMovie(Long movieId) {
+        return (List<MovieLikes>) movieLikesRepository.findByMovieId(movieId);
+
+    }
+
 }
