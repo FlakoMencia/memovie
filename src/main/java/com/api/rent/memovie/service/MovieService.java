@@ -28,5 +28,7 @@ public interface MovieService {
 
     public void deleteById(Long id);
 
+    public List<Movie> findByTittleContaining(String tags);
+
     
 }

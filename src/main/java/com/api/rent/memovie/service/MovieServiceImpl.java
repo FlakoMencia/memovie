@@ -90,4 +90,10 @@ public class MovieServiceImpl implements MovieService {
         movieRepository.deleteById(movieId);
     }
 
+    @Override
+    public List<Movie> findByTittleContaining(String tags) {
+       return movieRepository.findByTittleContaining(tags);
+               
+    }
+
 }

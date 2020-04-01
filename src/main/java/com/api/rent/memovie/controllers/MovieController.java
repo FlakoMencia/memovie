@@ -97,6 +97,21 @@ public class MovieController {
     }
 
     /**
+     * Metodo para buscar pelicula por titulo
+     *
+     * @param tags
+     * @return
+     */
+    @GetMapping({"/findby/tittle"})
+    public ResponseEntity<?> findByTittle(@RequestParam(required = false) String tags) {
+        if (tags == null || tags.isEmpty()) {
+            moviesAvailable(0, 5, "tittle", "asc");
+        }
+        List<Movie> moviesFound = movieService.findByTittleContaining(tags);
+        return new ResponseEntity<List<Movie>>(moviesFound, HttpStatus.FOUND);
+    }
+
+    /**
      * Metodo para acceder a los detalles por pelicula
      *
      * @param id

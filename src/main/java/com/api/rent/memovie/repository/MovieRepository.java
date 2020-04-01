@@ -19,6 +19,8 @@ public interface MovieRepository extends JpaRepository<Movie , Long> {
     public List<Movie> findByTittle(String title);
 
     public Page<Movie> findByAvailability(Pageable paging, Boolean available);
+
+    public List<Movie> findByTittleContaining(String tags);
     
     
     
