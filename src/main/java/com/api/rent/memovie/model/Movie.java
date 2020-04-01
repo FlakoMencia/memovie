@@ -58,10 +58,10 @@ public class Movie implements Serializable {
     private byte[] cover;
 
     @Column(nullable = false)
-    private Double rental_price;
+    private Double rentalPrice;
 
     @Column(nullable = false)
-    private Double sales_price;
+    private Double salesPrice;
 
     @Column(nullable = false)
     private Integer Stock;
