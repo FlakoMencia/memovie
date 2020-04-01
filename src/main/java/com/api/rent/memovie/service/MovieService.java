@@ -3,7 +3,7 @@ package com.api.rent.memovie.service;
 
 import com.api.rent.memovie.model.Cast;
 import com.api.rent.memovie.model.Movie;
-import com.api.rent.memovie.utilities.DetailMoviePojo;
+import com.api.rent.memovie.pojo.DetailMoviePojo;
 import java.util.List;
 import org.springframework.data.domain.Page;
 
@@ -25,6 +25,8 @@ public interface MovieService {
 
 
     public Page<Movie> findAllMoviesByAvailability(Integer pageNumber, Integer pageSize, String sortBy, String ordered, Boolean filterByAvailability, Boolean available);
+
+    public void deleteById(Long id);
 
     
 }

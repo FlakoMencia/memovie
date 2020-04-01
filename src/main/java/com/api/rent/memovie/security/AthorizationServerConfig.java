@@ -2,6 +2,7 @@ package com.api.rent.memovie.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,48 +22,50 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @Configuration
 @EnableAuthorizationServer
 public class AthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
-    
-    public static final String NOMBREAPP = "angularapp";
-    public static final String PASS = "123";
-    
+
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
-    
+
     @Autowired
     @Qualifier("authenticationManager")
     private AuthenticationManager authenticationManager;
+
+    @Value("${app.front.end.name.access}")
+    private String name;
     
+    @Value("${app.front.end.pass.access}")
+    private String pass;
+
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.authenticationManager(authenticationManager)
                 .tokenStore(tokenStore()).
                 accessTokenConverter(accessTokenConverter());
-        
+
     }
-    
+
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security.tokenKeyAccess("permitAll()")
                 .checkTokenAccess("isAuthenticated()");
     }
-    
+
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory().withClient(NOMBREAPP)
-                .secret(passwordEncoder.encode(PASS))
+        clients.inMemory().withClient(name)
+                .secret(passwordEncoder.encode(pass))
                 .scopes("read", "write")
                 .authorizedGrantTypes("password", "refresh_token")
                 .accessTokenValiditySeconds(3600)
                 .refreshTokenValiditySeconds(3600);
-        super.configure(clients); 
+        super.configure(clients);
     }
-    
+
     @Bean
     public JwtTokenStore tokenStore() {
-       return new JwtTokenStore(accessTokenConverter());
+        return new JwtTokenStore(accessTokenConverter());
     }
-    
-    
+
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();

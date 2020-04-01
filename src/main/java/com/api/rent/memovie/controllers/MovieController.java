@@ -5,9 +5,10 @@ import com.api.rent.memovie.model.Movie;
 import com.api.rent.memovie.service.CastService;
 import com.api.rent.memovie.service.MovieLikesService;
 import com.api.rent.memovie.service.MovieService;
-import com.api.rent.memovie.utilities.DetailMoviePojo;
+import com.api.rent.memovie.pojo.DetailMoviePojo;
 import java.util.List;
 import java.util.logging.Level;
+import javax.validation.Valid;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -17,6 +18,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -152,6 +154,35 @@ public class MovieController {
     }
 
     /**
+     * Metodo para actualizar pelicula
+     *
+     * @param movie
+     * @return
+     */
+    @PutMapping({"admin/{id}"})
+    public ResponseEntity<?> modifyMovie(@Valid @RequestBody Movie movie) {
+        movieService.save(movie);
+        return new ResponseEntity<Movie>(movie, HttpStatus.CREATED);
+    }
+
+    /**
+     * Metodo para eliminar totalmente una pelicula del catalogo
+     *
+     * @param id
+     * @return Response (Con el exito o error)
+     */
+    @DeleteMapping({"/admin/{id}"})
+    public ResponseEntity<?> deleteMove(@PathVariable Long id
+    ) {
+        if (movieService.existsById(id)) {
+            movieService.deleteById(id);
+        } else {
+            return new ResponseEntity<>("The movie doesn't exist", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<String>("Movie has been deleted!", HttpStatus.ACCEPTED);
+    }
+
+    /**
      * Metodo para obtener el elenco principales por pelicula
      *
      * @param id
@@ -159,7 +190,8 @@ public class MovieController {
      * @return ist<Cast>
      */
     @GetMapping({"/{id}/cast"})
-    public List<Cast> obtenerElenco(@PathVariable Long id) {
+    public List<Cast> obtenerElenco(@PathVariable Long id
+    ) {
         return castService.findByMovie(id);
     }
 
@@ -170,7 +202,8 @@ public class MovieController {
      * @return Cast
      */
     @PostMapping({"/{id}/cast"})
-    public ResponseEntity<?> obtenerElenco(@RequestBody Cast newCast) {
+    public ResponseEntity<?> obtenerElenco(@RequestBody Cast newCast
+    ) {
         try {
             castService.save(newCast);
         } catch (Exception e) {

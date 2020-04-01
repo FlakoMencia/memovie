@@ -1,4 +1,4 @@
-package com.api.rent.memovie.utilities;
+package com.api.rent.memovie.pojo;
 
 import com.api.rent.memovie.model.Cast;
 import com.api.rent.memovie.model.Movie;
@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 /**
  * Util para enviar detalle completo de pelicula

@@ -6,7 +6,7 @@ import com.api.rent.memovie.model.MovieLikes;
 import com.api.rent.memovie.repository.CastRepository;
 import com.api.rent.memovie.repository.MovieLikesRepository;
 import com.api.rent.memovie.repository.MovieRepository;
-import com.api.rent.memovie.utilities.DetailMoviePojo;
+import com.api.rent.memovie.pojo.DetailMoviePojo;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,8 +78,16 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public boolean existsById(Long id) {
-        return movieRepository.existsById(id);
+    public boolean existsById(Long movieId) {
+        return movieRepository.existsById(movieId);
+    }
+
+    @Override
+    @Transactional
+    public void deleteById(Long movieId) {
+        movieLikesRepository.removeByMovieId(movieId);
+        castRepository.removeByMovieId(movieId);
+        movieRepository.deleteById(movieId);
     }
 
 }

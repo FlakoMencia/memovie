@@ -24,13 +24,18 @@ public class ResourceServeConfig extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/").permitAll()
-                //                .antMatchers("/movies/**").permitAll() // FIXMEEEE!!
+                .antMatchers(HttpMethod.POST, "/security/signup").permitAll()
+                .antMatchers(HttpMethod.GET, "/security/confirm/{userName}").permitAll()
                 .antMatchers(HttpMethod.GET, "/movies/all").permitAll()
                 .antMatchers(HttpMethod.GET, "/movies/{id}/detail").permitAll()
                 .antMatchers(HttpMethod.GET, "/movies/admin/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/movies/admin/{id}/{enable}").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/movies/admin/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/movies/admin/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/movies/admin/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/movies/admin/{id}/cast").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/security/admin/disable/user/{userName}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/security/admin/change/{userName}/{role}").hasRole("ADMIN")
                 .anyRequest().authenticated();
     }
 

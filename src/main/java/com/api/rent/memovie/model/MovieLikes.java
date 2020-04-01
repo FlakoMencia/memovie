@@ -52,6 +52,6 @@ public class MovieLikes implements Serializable {
     @ManyToOne
     @JoinColumns({
         @JoinColumn(name = "USERLIKE_ID", referencedColumnName = "ID", nullable = false , foreignKey = @ForeignKey(name = "FK_USERLIKES"))})
-    private User user;
+    private UserPrincipal user;
  
 }
