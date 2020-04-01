@@ -19,6 +19,7 @@
 	
 
 ### Instructions: 
+
 After install all dependencie decleare in pom.xml you need to configurate MARIA DB with the following parameters (The DB dump is provided by mail)
 -  _url=jdbc:mariadb://localhost:3306/_
 -  _Database name= memovie_
@@ -34,7 +35,7 @@ Or you can use this Heroku MariaDB ADD-ONS:
 -  *password=c2x9luzrjgb2fb2v*
 (Configured in the **GitHub** Repository)
 
-Now you can run the back end! 
+### Now you can run the back end! 
 
 You can see all the availables movie ass well (pageable) on one of the following links:
 - http://me-movie.herokuapp.com/movies/all
