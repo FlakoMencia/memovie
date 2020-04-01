@@ -4,8 +4,12 @@
 	* First Realise
 	
 - Tegnologies:
-	- Spring Boot   - Spring Security    - Spring data JPA
-	- MariaDB   	- JWT				 - JavaMailSender
+	- Spring Boot   
+	- Spring Security    
+	- Spring data JPA
+	- MariaDB   	
+	- JWT				 
+	- JavaMailSender
 	
 	
 - Serve and Repositories :
@@ -56,15 +60,15 @@ SEND! And you going to recived the token to use for the authenticates urls
 Path = http://localhost:8080 or https://me-movie.herokuapp.com
 
 		(HttpMethod.POST) (Path)/security/signup -> permit to All
-        (HttpMethod.GET) (Path)/security/confirm/{userName} -> permit to All
-        (HttpMethod.GET) (Path)/movies/all -> permitAll()
-        (HttpMethod.GET) (Path)/movies/{id}/detail -> permit to All
-        (HttpMethod.GET) (Path)/movies/findby/tittle -> permit to All		
-        (HttpMethod.POST) (Path)/event/log/transaction -> authenticated 
-		(HttpMethod.PUT) (Path)/event/log/return/movie -> authenticated 
+		(HttpMethod.GET) (Path)/security/confirm/{userName} -> permit to All
+		(HttpMethod.GET) (Path)/movies/all -> permitAll()
+		(HttpMethod.GET) (Path)/movies/{id}/detail -> permit to All
+		(HttpMethod.GET) (Path)/movies/findby/tittle -> permit to All
+        (HttpMethod.POST) (Path)/event/log/transaction -> authenticated
+		(HttpMethod.PUT) (Path)/event/log/return/movie -> authenticated
 		(HttpMethod.POST) (Path)/movies/admin/** -> hasRole("ADMIN")
         (HttpMethod.PUT) (Path)/movies/admin/{id}/{enable} -> hasRole("ADMIN")
-        (HttpMethod.POST) (Path)/movies/admin/** -> hasRole("ADMIN") 
+        (HttpMethod.POST) (Path)/movies/admin/** -> hasRole("ADMIN")
         (HttpMethod.DELETE) (Path)/movies/admin/** -> hasRole("ADMIN")
         (HttpMethod.PUT) (Path)/movies/admin/** -> hasRole("ADMIN")
         (HttpMethod.POST) (Path)/movies/admin/{id}/cast -> hasRole("ADMIN")
