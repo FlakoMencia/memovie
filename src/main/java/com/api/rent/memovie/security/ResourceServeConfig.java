@@ -29,7 +29,6 @@ public class ResourceServeConfig extends ResourceServerConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/movies/all").permitAll()
                 .antMatchers(HttpMethod.GET, "/movies/{id}/detail").permitAll()
                 .antMatchers(HttpMethod.GET, "/movies/findby/tittle").permitAll()
-                .antMatchers(HttpMethod.POST, "/event/log/transaction").permitAll()
                 .antMatchers(HttpMethod.GET, "/movies/admin/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/movies/admin/{id}/{enable}").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/movies/admin/**").hasRole("ADMIN")
