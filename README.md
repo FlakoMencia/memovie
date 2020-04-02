@@ -58,7 +58,7 @@ please add :
 SEND! And you going to recived the token to use for the authenticates urls
 
 #### catalogo (*Please check the collections provided in the mail *):	
-Path = http://localhost:8080 or https://me-movie.herokuapp.com
+- Path = http://localhost:8080 or https://me-movie.herokuapp.com
 
 		(HttpMethod.POST) (Path)/security/signup -> permit to All
 		(HttpMethod.GET) (Path)/security/confirm/{userName} -> permit to All
@@ -79,8 +79,8 @@ Path = http://localhost:8080 or https://me-movie.herokuapp.com
 
 		
 		
-		* __NOTE: THE BACKEND APP HAS THE EMAIL CONFIRMATION FOR SIGN UP USER__
 		
+* __NOTE: THE BACKEND APP HAS THE EMAIL CONFIRMATION FOR SIGN UP USER__		
 
 ![flako building](https://www.publicationsports.com/cache/fileStorage/af/ab/afab947e2489fe6fc00242891ea1d44f_p_vi_65456_1517522071.jpeg)
 
