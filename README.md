@@ -79,6 +79,8 @@ Path = http://localhost:8080 or https://me-movie.herokuapp.com
 
 		
 		
+		* __NOTE: THE BACKEND APP HAS THE EMAIL CONFIRMATION FOR SIGN UP USER__
+		
 
 ![flako building](https://www.publicationsports.com/cache/fileStorage/af/ab/afab947e2489fe6fc00242891ea1d44f_p_vi_65456_1517522071.jpeg)
 
